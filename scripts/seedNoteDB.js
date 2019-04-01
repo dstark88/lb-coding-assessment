@@ -8,17 +8,17 @@ mongoose.connect(
 
 const noteSeed = [
   {
-    _id: 0,
+    id: 0,
     body: "Learn Java!",
     date: new Date(Date.now())
   },
   {
-    _id: 1,
+    id: 1,
     body: "Ask Larry about the TSP reports.",
     date: new Date(Date.now())
   },
   {
-    _id: 2,
+    id: 2,
     body: "Pick up milk!",
     date: new Date(Date.now())
   },

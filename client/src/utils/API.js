@@ -1,20 +1,30 @@
 import axios from "axios";
 
 export default {
-  // Gets notes from the Google API
+  // Gets all notes 
   getNotes: function(q) {
-    return axios.get("/api/google", { params: { q: "title:" + q } });
+    return axios.get("/api/notes", { params: { q: "body:" + q } });
   },
-  // Gets all saved notes
-  getSavedNotes: function() {
-    return axios.get("/api/notes");
+  // Gets the note with the given id
+  getNote: function(id) {
+    return axios.get("/api/notes/" + id);
+  },
+  createNotes: function(noteInfo) {
+    return axios.post("/api/notes/", noteInfo);
   },
   // Deletes the saved note with the given id
   deleteNote: function(id) {
     return axios.delete("/api/notes/" + id);
   },
-  // Saves an note to the database
+  // Saves an book to the database
   saveNote: function(noteData) {
     return axios.post("/api/notes", noteData);
+  },
+  // Saves an note to the database
+  getSavedNotes: function() {
+    return axios.get("/api/notes");
+  },
+  updateNote: function(noteUpdate) {
+    return axios.update("/api/notes/update", noteUpdate);
   }
 };

@@ -37,9 +37,9 @@ class Saved extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1 className="text-center">
-                <strong>(React) Google Notes Search</strong>
+                <strong>Saved Notes</strong>
               </h1>
-              <h2 className="text-center">Search for and Save Notes of Interest.</h2>
+              <h2 className="text-center">All Saved Notes.</h2>
             </Jumbotron>
           </Col>
         </Row>
@@ -50,16 +50,12 @@ class Saved extends Component {
                 <List>
                   {this.state.notes.map(note => (
                     <Note
-                      key={note._id}
-                      title={note.title}
-                      subtitle={note.subtitle}
-                      link={note.link}
-                      authors={note.authors.join(", ")}
-                      description={note.description}
-                      image={note.image}
+                      key={note.id}
+                      body={note.body}
+                      date={note.date}
                       Button={() => (
                         <button
-                          onClick={() => this.handleNoteDelete(note._id)}
+                          onClick={() => this.handleNoteDelete(note.id)}
                           className="btn btn-danger ml-2"
                         >
                           Delete

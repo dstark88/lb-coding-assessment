@@ -34,7 +34,7 @@ class Nav extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
         <Link className="navbar-brand" to="/">
-          Google Notes
+          Notes
         </Link>
         <button
           onClick={this.toggleNav}
@@ -52,8 +52,8 @@ class Nav extends Component {
             <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
-                className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
-                to="/"
+                className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"}
+                to="/search"
               >
                 Search
               </Link>
@@ -66,6 +66,10 @@ class Nav extends Component {
               >
                 Saved
               </Link>
+            </li>
+            <li className="nav-item nav-link active">
+                <a href="https://dstark88.github.io/portfolio/" target="blank">
+                Portfolio</a>
             </li>
           </ul>
         </div>

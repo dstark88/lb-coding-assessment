@@ -9,10 +9,10 @@ function Form({ q, handleInputChange, handleFormSubmit }) {
         </label>
         <input
           className="form-control"
-          id="Title"
+          id="Body"
           type="text"
           value={q}
-          placeholder="Ready Player One"
+          placeholder="Search for a note"
           name="q"
           onChange={handleInputChange}
           required

@@ -3,17 +3,17 @@ import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
 import "./style.css";
 
-function Note({ title, subtitle, authors, link, description, image, Button }) {
+function Note({ id, body, date, Button }) {
   return (
     <ListItem>
       <Row className="flex-wrap-reverse">
         <Col size="md-8">
-          <h3 className="font-italic">{title}</h3>
-          {subtitle && <h5 className="font-italic">{subtitle}</h5>}
+          <h3 className="font-italic">{body}</h3>
+          {id && <h5 className="font-italic">{id}</h5>}
         </Col>
         <Col size="md-4">
           <div className="btn-container">
-            <a className="btn btn-light" target="_blank" rel="noopener noreferrer" href={link}>
+            <a className="btn btn-light" target="_blank" rel="noopener noreferrer" href={"/"}>
               View
             </a>
             <Button />
@@ -22,15 +22,7 @@ function Note({ title, subtitle, authors, link, description, image, Button }) {
       </Row>
       <Row>
         <Col size="md-6">
-          <p className="font-italic small">Written by {authors}</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col size="12 sm-4 md-2">
-          <img className="img-thumbnail img-fluid w-100" src={image} alt={title} />
-        </Col>
-        <Col size="12 sm-8 md-10">
-          <p>{description}</p>
+          <p className="font-italic small">Date Written {date}</p>
         </Col>
       </Row>
     </ListItem>

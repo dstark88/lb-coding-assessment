@@ -4,8 +4,10 @@ function Footer() {
   return (
     <footer>
       <hr />
-      <p className="pull-right">
-        <i className="fab fa-github" /> Proudly built using React.js
+      <p className="pull-right footer text-center">
+        <a href="https://github.com/dstark88/lb-coding-assessment" target="blank">
+        <i className="fab fa-github" /></a> Proudly built using React.js
+        &copy;2019 Denise Stark
       </p>
     </footer>
   );
