@@ -9,6 +9,10 @@ export default {
   getNote: function(id) {
     return axios.get("/api/notes/" + id);
   },
+  // // Gets the site with the given id
+  findNotes: function(noteInfo) {
+    return axios.post("/api/notes/", noteInfo);
+  },
   createNotes: function(noteInfo) {
     return axios.post("/api/notes/", noteInfo);
   },

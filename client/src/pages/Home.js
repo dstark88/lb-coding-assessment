@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
-import { TextArea, FormBtn } from "../components/Form";
+import { Input, TextArea, FormBtn } from "../components/Form";
 import { Link } from "react-router-dom";
 
 class Home extends Component {
@@ -40,28 +40,22 @@ class Home extends Component {
 
     handleFormSubmit = event => {
     event.preventDefault();
-
-    if (
-        // this.state.id && 
-        this.state.body 
-        // && this.state.date
-        ) {
+    if (this.state.id || this.state.body) {
         API.saveNote({
-        // id: this.state.id,
-        body: this.state.body,
-        // date: this.state.date
+            id: this.state.id,
+            body: this.state.body,
         })
         .then(res => {
         this.getNotes({ notes: res.data })
-        this.setState({ body: "" })
+        this.setState({ id: "", body: "" })
         })
         .catch(err => console.log(err));
     }
     };
 
-    handleNoteUpdate = id => {
-        API.updateNote(id).then(res => this.getNotes());
-    }
+    // handleNoteUpdate(event) {
+    //     this.setState({ body: event.target.value })
+    // }
     
     handleNoteDelete = id => {
         API.deleteNote(id).then(res => this.getNotes());
@@ -83,6 +77,12 @@ class Home extends Component {
               <Col size="md-6">
                 <Card title="Add Notes">
                     <form>
+                        <Input 
+                            value={this.state.id}
+                            onChange={this.state.handleInputChange}
+                            name="id"
+                            placeholder="Note ID number (required)"
+                        />
                         <TextArea
                             value={this.state.body}
                             onChange={this.handleInputChange}
@@ -105,15 +105,16 @@ class Home extends Component {
                       {this.state.notes.map(note => (
                         <Note
                           key={note._id}
+                          id={note.id}
                           body={note.body}
                           date={note.date}
-                          Update={() => (
-                            <button
-                              onClick={() => this.handleNoteUpdate(note._id)}
-                              className="btn btn-light">
-                              Update
-                            </button>
-                          )}
+                        //   Update={() => (
+                        //     <button
+                        //       onClick={() => this.handleNoteUpdate(note._id)}
+                        //       className="btn btn-light">
+                        //       Update
+                        //     </button>
+                        //   )}
                           Delete={() => (  
                             <button
                               onClick={() => this.handleNoteDelete(note._id)}
