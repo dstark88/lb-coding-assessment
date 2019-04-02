@@ -58,9 +58,13 @@ class Home extends Component {
         .catch(err => console.log(err));
     }
     };
+
+    handleNoteUpdate = id => {
+        API.updateNote(id).then(res => this.getNotes());
+    }
     
     handleNoteDelete = id => {
-    API.deleteNote(id).then(res => this.getNotes());
+        API.deleteNote(id).then(res => this.getNotes());
     };
     
       render() {
@@ -103,15 +107,22 @@ class Home extends Component {
                           key={note._id}
                           body={note.body}
                           date={note.date}
-                          Button={() => (
+                          Update={() => (
+                            <button
+                              onClick={() => this.handleNoteUpdate(note._id)}
+                              className="btn btn-light">
+                              Update
+                            </button>
+                          )}
+                          Delete={() => (  
                             <button
                               onClick={() => this.handleNoteDelete(note._id)}
-                              className="btn btn-danger ml-2"
-                            >
+                              className="btn btn-danger">
                               Delete
                             </button>
                           )}
                         />
+                        
                       ))}
                     </List>
                   ) : (

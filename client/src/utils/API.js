@@ -24,7 +24,7 @@ export default {
   getSavedNotes: function() {
     return axios.get("/api/notes");
   },
-  updateNote: function(noteUpdate) {
-    return axios.update("/api/notes/update", noteUpdate);
+  updateNote: function(id) {
+    return axios.put("/api/notes/", + id);
   }
 };

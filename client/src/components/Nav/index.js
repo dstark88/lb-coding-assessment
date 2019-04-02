@@ -26,10 +26,6 @@ class Nav extends Component {
     window.addEventListener("resize", this.updateWidth);
   }
 
-  // componentWillUnMount() {
-  //   window.removeEventListener("resize", this.updateWidth);
-  // }
-
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">

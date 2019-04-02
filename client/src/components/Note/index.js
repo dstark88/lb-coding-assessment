@@ -3,7 +3,8 @@ import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
 import "./style.css";
 
-function Note({ id, body, date, Button }) {
+function Note({ id, body, date, Update, Delete }) {
+  
   return (
     <ListItem>
       <Row className="flex-wrap-reverse">
@@ -11,13 +12,11 @@ function Note({ id, body, date, Button }) {
           <h3 className="font-italic">{body}</h3>
           {id && <h5 className="font-italic">{id}</h5>}
         </Col>
-        <Col size="md-4">
-          <div className="btn-container">
-            <a className="btn btn-light" target="_blank" rel="noopener noreferrer" href={"/"}>
-              Update
-            </a>
-            <Button />
-          </div>
+        <Col size="md-2">
+            <Update />
+        </Col>
+        <Col size="md-2">
+            <Delete />
         </Col>
       </Row>
       <Row>
