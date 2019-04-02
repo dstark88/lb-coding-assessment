@@ -60,7 +60,7 @@ class Home extends Component {
     };
     
     handleNoteDelete = id => {
-    API.deleteNote(id).then(res => this.getNote());
+    API.deleteNote(id).then(res => this.getNotes());
     };
     
       render() {
@@ -100,12 +100,12 @@ class Home extends Component {
                     <List>
                       {this.state.notes.map(note => (
                         <Note
-                          key={note.id}
+                          key={note._id}
                           body={note.body}
                           date={note.date}
                           Button={() => (
                             <button
-                              onClick={() => this.handleNoteDelete(note.id)}
+                              onClick={() => this.handleNoteDelete(note._id)}
                               className="btn btn-danger ml-2"
                             >
                               Delete

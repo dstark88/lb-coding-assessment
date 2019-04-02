@@ -18,12 +18,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Note.findOneAndUpdate({ _id: req.params.id }, req.body)
+    db.Note.findOneAndUpdate({_id: req.params.id }, req.body)
       .then(dbNote => res.json(dbNote))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.Note.findById(req.params.id)
+    db.Note.findById({ _id: req.params.id })
       .then(dbNote => dbNote.remove())
       .then(dbNote => res.json(dbNote))
       .catch(err => res.status(422).json(err));
