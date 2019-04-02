@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
   // Gets all notes 
-  getNotes: function(q) {
-    return axios.get("/api/notes", { params: { q: "body:" + q } });
+  getNotes: function() {
+    return axios.get("/api/notes");
   },
   // Gets the note with the given id
   getNote: function(id) {

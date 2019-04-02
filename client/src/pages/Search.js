@@ -42,11 +42,11 @@ class Search extends Component {
     this.getNotes();
   };
 
-  handleNoteSave = id => {
-    const note = this.state.notes.find(note => note.id === id);
+  handleNoteSave = _id => {
+    const note = this.state.notes.find(note => note._id === _id);
 
     API.saveNote({
-      Id: note.id,
+      _id: note._id,
       body: note.body,
       date: note.date,
     }).then(() => this.getNotes());
@@ -81,12 +81,12 @@ class Search extends Component {
                 <List>
                   {this.state.notes.map(note => (
                     <Note
-                      key={note.id}
+                      key={note._id}
                       body={note.body}
                       date={note.date}
                       Button={() => (
                         <button
-                          onClick={() => this.handleNoteSave(note.id)}
+                          onClick={() => this.handleNoteSave(note._id)}
                           className="btn btn-primary ml-2"
                         >
                           Save

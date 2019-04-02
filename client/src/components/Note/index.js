@@ -14,7 +14,7 @@ function Note({ id, body, date, Button }) {
         <Col size="md-4">
           <div className="btn-container">
             <a className="btn btn-light" target="_blank" rel="noopener noreferrer" href={"/"}>
-              View
+              Update
             </a>
             <Button />
           </div>

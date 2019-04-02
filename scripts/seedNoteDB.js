@@ -10,17 +10,17 @@ const noteSeed = [
   {
     id: 0,
     body: "Learn Java!",
-    date: new Date(Date.now())
+    date: { type: Date, default: Date.now },
   },
   {
     id: 1,
     body: "Ask Larry about the TSP reports.",
-    date: new Date(Date.now())
+    date: { type: Date, default: Date.now },
   },
   {
     id: 2,
     body: "Pick up milk!",
-    date: new Date(Date.now())
+    date: { type: Date, default: Date.now },
   },
 ]
 

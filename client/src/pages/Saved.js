@@ -26,8 +26,8 @@ class Saved extends Component {
       .catch(err => console.log(err));
   };
 
-  handleNoteDelete = id => {
-    API.deleteNote(id).then(res => this.getSavedNotes());
+  handleNoteDelete = _id => {
+    API.deleteNote(_id).then(res => this.getSavedNotes());
   };
 
   render() {
@@ -50,12 +50,12 @@ class Saved extends Component {
                 <List>
                   {this.state.notes.map(note => (
                     <Note
-                      key={note.id}
+                      key={note._id}
                       body={note.body}
                       date={note.date}
                       Button={() => (
                         <button
-                          onClick={() => this.handleNoteDelete(note.id)}
+                          onClick={() => this.handleNoteDelete(note._id)}
                           className="btn btn-danger ml-2"
                         >
                           Delete
