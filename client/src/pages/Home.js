@@ -40,14 +40,13 @@ class Home extends Component {
 
     handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.id || this.state.body) {
+    if (this.state.body) {
         API.saveNote({
-            id: this.state.id,
             body: this.state.body,
         })
         .then(res => {
         this.getNotes({ notes: res.data })
-        this.setState({ id: "", body: "" })
+        this.setState({ body: "" })
         })
         .catch(err => console.log(err));
     }
@@ -77,12 +76,6 @@ class Home extends Component {
               <Col size="md-6">
                 <Card title="Add Notes">
                     <form>
-                        <Input 
-                            value={this.state.id}
-                            onChange={this.state.handleInputChange}
-                            name="id"
-                            placeholder="Note ID number (required)"
-                        />
                         <TextArea
                             value={this.state.body}
                             onChange={this.handleInputChange}

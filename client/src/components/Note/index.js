@@ -10,7 +10,7 @@ function Note({ id, body, date, Update, Delete }) {
       <Row className="flex-wrap-reverse">
         <Col size="md-8">
           <h3 className="font-italic">{body}</h3>
-          {id && <h5 className="font-italic">Note ID #{id}</h5>}
+          
         </Col>
         {/* <Col size="md-2">
             <Update />

@@ -5,8 +5,10 @@ import Form from "../components/Form";
 import Note from "../components/Note";
 import Footer from "../components/Footer";
 import API from "../utils/API";
+import { Link } from "react-router-dom";
+import { List, ListItem } from "../components/List";
+
 import { Col, Row, Container } from "../components/Grid";
-import { List } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 
 
@@ -17,7 +19,6 @@ class Search extends Component {
     body: "",
     date: "",
     message: "Search For A Note To Begin!",
-    idList: [],
     bodyList: [],
     dateList: [],
   };
@@ -30,7 +31,7 @@ class Search extends Component {
   };
 
   getNotes = () => {
-    API.getNotes(this.state.id || this.state.body || this.state.date)
+    API.getNote(this.state.body || this.state.date)
       .then(res =>
         this.setState({
           notes: res.data
@@ -47,14 +48,13 @@ class Search extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     // this.getNotes();
-    if (this.state.id || this.state.body || this.state.date) {
+    if (this.state.body || this.state.date) {
       API.findNotes({
-        id: this.state.id,
         body: this.state.body,
         date: this.state.date,
       })
         .then(res => {
-          this.setState({ notes: res.data, id: "", body: "", date: "" })
+          this.setState({ notes: res.data, body: "", date: "" })
         })
         .catch(err => console.log(err));
     }
@@ -85,16 +85,6 @@ class Search extends Component {
           <Col size="md-12">
             <Card title="Note Search" icon="far fa-book">
               <form>
-                <Input 
-                  list="id"
-                  value={this.state.id}
-                  onChange={this.handleInputChange}
-                  name="id"
-                  placeholder="Note ID # (Optional)"
-                />
-                <datalist id="id">
-                  {this.state.idList.map(note => <option key={note}>{note}</option>)}
-                </datalist>
                 <Input 
                   list="body"
                   value={this.state.body}
@@ -131,20 +121,14 @@ class Search extends Component {
               {this.state.notes.length ? (
                 <List>
                   {this.state.notes.map(note => (
-                    <Note
-                      key={note._id}
-                      id={note.id}
-                      body={note.body}
-                      date={note.date}
-                      Button={() => (
-                        <button
-                          onClick={() => this.handleNoteSave(note._id)}
-                          className="btn btn-primary ml-2"
-                        >
-                          Save
-                        </button>
-                      )}
-                    />
+                    <ListItem key={note._id}>
+                    <Link to={"/notes/" + note._id}>
+                      
+                        <strong>{note.body}</strong> Date Written {note.date}
+                        <br></br>
+                    </Link>
+           
+                  </ListItem>
                   ))}
                 </List>
               ) : (
